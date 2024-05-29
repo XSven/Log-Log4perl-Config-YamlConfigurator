@@ -11,12 +11,12 @@ _build/
 cover_db/
 blib/
 inc/
-local-lib/
+local/
 .lwpcookies
 .last_cover_stats
 nytprof.out
 pod2htm*.tmp
 pm_to_blib
 tags
-Local-Log-Log4perl-Config-YamlConfigurator-*
-Local-Log-Log4perl-Config-YamlConfigurator-*.tar.gz
+Log-Log4perl-Config-YamlConfigurator-*
+Log-Log4perl-Config-YamlConfigurator-*.tar.gz
