@@ -1,7 +1,13 @@
 use strict;
 use warnings;
 
-use Config                        qw( %Config );
+use Config qw( %Config );
+
+BEGIN {
+  require './maint/AuthorExtensions.pl'
+    unless ( $Config{ osname } =~ m/\A(?:freebsd|openbsd|solaris)\z/ or exists( $ENV{ MAKELEVEL } ) );
+}
+
 use ExtUtils::MakeMaker::CPANfile qw( WriteMakefile );
 
 my %WriteMakefileArgs = (
@@ -35,8 +41,5 @@ my %WriteMakefileArgs = (
   realclean => { FILES                => 'local' },
   test      => { RECURSIVE_TEST_FILES => 1 },
 );
-
-require './maint/AuthorExtensions.pl'
-  unless ( $Config{ osname } =~ m/\A(?:freebsd|openbsd|solaris)\z/ or exists( $ENV{ MAKELEVEL } ) );
 
 WriteMakefile( %WriteMakefileArgs );
