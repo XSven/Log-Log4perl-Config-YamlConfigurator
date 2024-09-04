@@ -14,5 +14,6 @@ t/05-critic.t
 t/container.yml
 t/init.t
 t/init_with_beam_wire.t
-t/logging.yml
+t/logging_container.yml
+t/logging_data.yml
 t/unbound_appenders.t
