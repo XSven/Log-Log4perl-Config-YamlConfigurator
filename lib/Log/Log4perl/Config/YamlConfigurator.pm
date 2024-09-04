@@ -11,7 +11,7 @@ use version 0.9915; our $VERSION = version->declare( 'v1.0.0' );
 use parent qw( Clone Log::Log4perl::Config::BaseConfigurator );
 
 use Carp                  qw( croak  );
-use YAML                  qw( Load );
+use YAML::PP              qw( Load );
 use Log::Log4perl::Config qw();
 
 sub create_appender_instance {
