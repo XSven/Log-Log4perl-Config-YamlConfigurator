@@ -22,7 +22,7 @@ my %WriteMakefileArgs = (
     provides    => {
       'Log::Log4perl::Config::YamlConfigurator' => {
         file    => 'lib/Log/Log4perl/Config/YamlConfigurator.pm',
-        version => 'v1.0.0',
+        version => '1.0.1',
       },
     },
     resources => {
