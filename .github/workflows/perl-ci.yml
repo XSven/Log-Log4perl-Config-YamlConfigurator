@@ -7,8 +7,6 @@ on:
 
 jobs:
   test:
-    env:
-      RELEASE_TESTING: 1
     uses: PerlToolsTeam/github_workflows/.github/workflows/cpan-test.yml@main
     with:
       perl_version: "[ 'latest' ]"
