@@ -27,8 +27,8 @@ on runtime => sub {
 on test => sub {
   requires 'Test::Fatal'   => '0';
   requires 'Test::Harness' => '3.50';
-  requires 'Test::Needs'   => '0';
   requires 'Test::More'    => '1.001005';    # * Subtests accept args
+  requires 'Test::Needs'   => '0';
   requires 'Test::Output'  => '0';
 };
 
