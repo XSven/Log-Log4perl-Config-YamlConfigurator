@@ -2,15 +2,12 @@ NAME
 
 Log::Log4perl::Config::YamlConfigurator - Reads Log4perl YAML configurations
 
-
 INSTALLATION
 
-To install this module manually, run the following commands:
+To install this module, use your preferred CPAN client. If this is cpanm then
+run the command
 
-  perl Makefile.PL
-  make
-  make test
-  make install
+  cpanm Log::Log4perl::Config::YamlConfigurator
 
 DOCUMENTATION
 
