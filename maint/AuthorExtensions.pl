@@ -34,15 +34,15 @@ $ENV{ PATH } = ## no critic (RequireLocalizedPunctuationVars)
 export PATH := $ENV{ PATH }
 
 ifdef PERL5LIB
-  PERL5LIB := @{ [ -d $t_lib ? "$t_lib:" : () ] }$local_lib:\$(PERL5LIB)
+  PERL5LIB := ${ \( -d $t_lib ? "$t_lib:" : '' ) }$local_lib:\$(PERL5LIB)
 else
-  export PERL5LIB := @{ [ -d $t_lib ? "$t_lib:" : () ] }$local_lib
+  export PERL5LIB := ${ \( -d $t_lib ? "$t_lib:" : '' ) }$local_lib
 endif
 
 # runs the last modified test script
 .PHONY: testlm
 testlm:
-	\$(NOECHO) \$(MAKE) TEST_FILES=\$\$(find t -name '*.t' -printf '%T@ %p\\n' | sort -nr | head -1 | cut -d' ' -f2) test
+	\$(NOECHO) \$(MAKE) TEST_FILES=\$\$(perl -e 'print STDOUT ( sort { -M \$\$a > -M \$\$b } glob( "\$\$ARGV[0]" ) )[0]' '\$(TEST_FILES)') test
 MAKE_FRAGMENT
 
     my $prove = _which 'prove';
@@ -51,14 +51,15 @@ MAKE_FRAGMENT
 # runs test scripts through TAP::Harness (prove) instead of Test::Harness (ExtUtils::MakeMaker)
 .PHONY: testp
 testp: pure_all
-	\$(NOECHO) \$(FULLPERLRUN) $prove\$(if \$(TEST_VERBOSE:0=), --verbose) --norc@{ [ -f $prove_rc_file ? " --rc $prove_rc_file"  : () ] } --blib --recurse --shuffle \$(TEST_FILES)
+	\$(NOECHO) $prove\$(if \$(TEST_VERBOSE:0=), --verbose) --norc${ \( -f $prove_rc_file ? " --rc $prove_rc_file"  : '' ) } --blib --recurse --shuffle \$(TEST_FILES)
 MAKE_FRAGMENT
 
-    $make_fragment .= <<"MAKE_FRAGMENT" if _which 'cover';
+    my $cover = _which 'cover';
+    $make_fragment .= <<"MAKE_FRAGMENT" if $cover;
 
 .PHONY: cover
 cover:
-	\$(NOECHO) cover -test -ignore @{ [ basename( $local_lib_root ) ] } -report vim
+	\$(NOECHO) $cover -test -ignore ${ \( basename( $local_lib_root ) ) } -report vim
 MAKE_FRAGMENT
 
     return $make_fragment;
