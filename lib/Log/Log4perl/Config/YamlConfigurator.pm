@@ -5,7 +5,7 @@ package Log::Log4perl::Config::YamlConfigurator;
 
 # keeping the following $VERSION declaration on a single line is important
 #<<<
-use version 0.9915; our $VERSION = version->declare( '1.0.1' );
+use version 0.9915; our $VERSION = version->declare( '1.0.2' );
 #>>>
 
 use parent qw( Clone Log::Log4perl::Config::BaseConfigurator );
