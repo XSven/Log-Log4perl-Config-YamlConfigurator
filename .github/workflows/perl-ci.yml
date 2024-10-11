@@ -7,7 +7,6 @@ on:
 
 jobs:
   test:
-    uses: XSven/github_workflows/.github/workflows/cpan-test.yml@development
+    uses: PerlToolsTeam/github_workflows/.github/workflows/cpan-test.yml@main
     with:
-      perl_version: '[ "5.14.4" ]'
       testing_context: '[ "release" ]'
