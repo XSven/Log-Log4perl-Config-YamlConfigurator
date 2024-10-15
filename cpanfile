@@ -22,6 +22,7 @@ on runtime => sub {
   requires 'YAML::PP'                                => '0';
   requires 'parent'                                  => '0';
   requires 'strict'                                  => '0';
+  requires 'version'                                 => '0.9915';
   requires 'warnings'                                => '0';
 };
 
